@@ -26,11 +26,12 @@ namespace Person
             get { return this.age; }
             set
             {
-                if (value >= 0)
+                if (value <= 0)
                 {
-                    this.age = value;
+                    throw new ArgumentException("Age must be positive!");
                 }
 
+                    this.age = value;
             }
         }
 
@@ -41,7 +42,7 @@ namespace Person
                                  this.Name,
                                  this.Age));
 
-            return stringBuilder.ToString().TrimEnd();
+            return stringBuilder.ToString();
         }
 
 
