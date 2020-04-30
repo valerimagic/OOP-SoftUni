@@ -12,6 +12,10 @@ namespace NeedForSpeed
         {
         }
 
-        public override double FuelConsumption => DefaultFuelConsumption;
+        public override double FuelConsumption()
+        {
+            return 3.0;
+
+        }
     }
 }
