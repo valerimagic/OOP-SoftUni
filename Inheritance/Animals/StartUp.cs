@@ -12,9 +12,9 @@ namespace Animals
 
             string command;
 
-            while((command = Console.ReadLine()) != "Beast")
+            while((command = Console.ReadLine()) != "Beast!")
             {
-                string[] input = Console.ReadLine().Split(" ");
+                string[] input = Console.ReadLine().Split();
 
                 string name = input[0];
                 int age = int.Parse(input[1]);
@@ -34,13 +34,13 @@ namespace Animals
                     {
                         animals.Add(new Frog(name, age, gender));
                     }
-                    else if (command == "Dog")
+                    else if (command == "Tomcat")
                     {
-                        animals.Add(new Dog(name, age, gender));
+                        animals.Add(new Tomcat(name, age));
                     }
                     else if (command == "Kitten")
                     {
-                        animals.Add(new Kitten(name, age, gender));
+                        animals.Add(new Kitten(name, age));
                     }
 
                     else
@@ -65,12 +65,11 @@ namespace Animals
 
         }
 
-        private void PrintAnimals(List<Animal> animals)
-        {
-            foreach (Animal animal in animals)
-            {
-                Console.WriteLine(animal.ToString().TrimEnd());
-            }
-        }
+       
+            //foreach(var animal in animals)
+            //{
+            //    Console.WriteLine();
+            //}
+       
     }
 }
