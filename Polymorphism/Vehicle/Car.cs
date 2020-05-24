@@ -2,29 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Vehicle
+namespace Exe1Vehicle
 {
-    public class Car
+    public class Car : Vehicle
     {
-
-
-
-
-        public double FuelQuantity { get; set; }
-
-        public double FuelConsumption { get; set; }
-
-
-        public void CarTravell(int distance)
+        public Car(double fuelQuantity, double fuelConsumption) 
+            : base(fuelQuantity, fuelConsumption + 0.9)
         {
-
-            if(this.FuelConsumption * distance < this.FuelQuantity)
-            {
-                Console.WriteLine("Car need refueling");
-            }
-
-            this.FuelQuantity -= distance * this.FuelConsumption;
         }
-
     }
 }
