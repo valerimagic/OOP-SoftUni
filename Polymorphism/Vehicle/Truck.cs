@@ -2,9 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Vehicle
+namespace Exe1Vehicle
 {
-    class Truck
+    public class Truck : Vehicle
     {
+        public Truck(double fuelQuantity, double fuelConsumption) 
+            : base(fuelQuantity, fuelConsumption + 1.6)
+        {
+        }
+
+        public override void Refuel(double liters)
+        {
+            base.Refuel(liters * 0.95);
+        }
     }
 }
