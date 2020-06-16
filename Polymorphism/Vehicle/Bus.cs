@@ -7,54 +7,55 @@ namespace Exe1Vehicle
 {
     public class Bus : Vehicle
     {
-        
-        //private double fuelConsumptionWhenEmpty;
-        
 
-        public Bus(double fuelQuantity, double fuelConsumtion, double tankCapacity) 
+        private double fuelConsumptionWhenEmpty;
+
+
+        public Bus(double fuelQuantity, double fuelConsumtion, double tankCapacity)
             : base(fuelQuantity, fuelConsumtion, tankCapacity)
         {
-            
-           // this.fuelConsumptionWhenEmpty = fuelConsumtion;
-            
+
+            this.fuelConsumptionWhenEmpty = fuelConsumtion;
+
         }
-
-        public string BusDriveEmpty(double distance, string commandBus)
+        public string CarTravelled(double distance, string commandBus)
         {
-            if(commandBus != "DriveEmpty")
+
+            if (commandBus == "DriveEmpty")
             {
-                this.fuelConsumption += 1.4;
+                this.fuelConsumption = fuelConsumptionWhenEmpty;
+                return base.CarTravelled(distance);
             }
 
-            if(this.fuelConsumption * distance <= this.fuelQuantity)
-            {
-                this.fuelQuantity -= distance * this.fuelConsumption;
-                return $"{this.GetType().Name} travelled {distance} km";
-            }
 
             else
             {
-                return $"{this.GetType().Name} needs refueling";
+                this.fuelConsumption = this.fuelConsumptionWhenEmpty + 1.4;
+                return base.CarTravelled(distance);
             }
+
         }
 
-        //public string BusDriveEmpty(double distance, string commandBus)
-        //{
 
-        //    if(commandBus == "DriveEmpty")
+        //public string CarTravelled(double distance, string commandBus)
+        //{
+        //    if(commandBus != "DriveEmpty")
         //    {
-        //        this.fuelConsumption = fuelConsumptionWhenEmpty;
-        //        return base.CarTravelled(distance);
+        //        this.fuelConsumption += 1.4;
         //    }
-            
+
+        //    if(this.fuelConsumption * distance <= this.fuelQuantity)
+        //    {
+        //        this.fuelQuantity -= distance * this.fuelConsumption;
+        //        return $"{this.GetType().Name} travelled {distance} km";
+        //    }
 
         //    else
         //    {
-        //        this.fuelConsumption = fuelConsumptionWhenEmpty + 1.4;
-        //        return base.CarTravelled(distance);
+        //        return $"{this.GetType().Name} needs refueling";
         //    }
-
         //}
+
 
         //public override string CarTravell(double distance)
         //{
