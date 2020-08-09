@@ -6,6 +6,7 @@ using System.Text;
 namespace AquaShop.Models.Decorations
 {
     public abstract class Decoration : IDecoration
+
     {
         protected Decoration(int comfort, decimal price)
         {

@@ -6,13 +6,13 @@ namespace AquaShop.Models.Decorations
 {
     public class Plant : Decoration
     {
-        private const int PlantConfort = 5;
-        private const decimal PlantPrice = 10;
+        private const int PlantComfort = 5;
+        private const int PlantPrice = 10;
+
+
         public Plant() 
-            : base(PlantConfort, PlantPrice)
+            : base(PlantComfort, PlantPrice)
         {
         }
-
-
     }
 }
