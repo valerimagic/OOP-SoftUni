@@ -8,6 +8,7 @@ namespace AquaShop.Models.Decorations
     {
         private const int OrnamentConfort = 1;
         private const decimal OrnamentPrice = 5;
+
         public Ornament() 
             : base(OrnamentConfort, OrnamentPrice)
         {
