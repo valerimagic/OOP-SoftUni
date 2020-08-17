@@ -47,6 +47,7 @@ namespace AquaShop.Models.Aquariums
         public int Comfort => this.Decorations.Sum(c => c.Comfort);
 
         public ICollection<IDecoration> Decorations => this.decorations.AsReadOnly();
+		
 
         public ICollection<IFish> Fish => this.fish.AsReadOnly();
 
