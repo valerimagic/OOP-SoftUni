@@ -1,4 +1,4 @@
-﻿namespace EasterRaces.Core.Contracts
+﻿namespace RolandGarros.Core.Contracts
 {
     public interface IChampionshipController
     {

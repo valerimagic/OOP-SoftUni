@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using EasterRaces.Core.Contracts;
-using EasterRaces.Models.Cars.Contracts;
-using EasterRaces.Models.Cars.Entities;
-using EasterRaces.Models.Drivers.Contracts;
-using EasterRaces.Models.Drivers.Entities;
-using EasterRaces.Models.Races.Contracts;
-using EasterRaces.Models.Races.Entities;
-using EasterRaces.Repositories.Entities;
-using EasterRaces.Utilities.Messages;
+using RolandGarros.Core.Contracts;
+using RolandGarros.Models.Players.Contracts;
+using RolandGarros.Models.Players.Entities;
+using RolandGarros.Utilities.Messages;
 
-namespace EasterRaces.Core.Entities
+namespace RolandGarros.Core.Entities
 {
     public class ChampionshipController : IChampionshipController
     {
@@ -43,36 +37,9 @@ namespace EasterRaces.Core.Entities
         {
             while (true)
             {
-                Random random = new Random();
-                int lucky = random.Next(1, 3);
+                CheckForWinner();
 
-                if (lucky == 1)
-                {
-                    if (halfOne.Count == 1 && winPlayers.Count == 0)
-                    {
-                        firstPlayer = halfOne[0];
-                        secondPlayer = halfTwo[0];
-                    }
-                    halfOne[0].Win++;
-                    winPlayers.Add(halfOne[0]);
-                    halfTwo[0].Loss++;
-                    lossPlayers.Add(halfTwo[0]);
-                }
-                else if (lucky == 2)
-                {
-                    if (halfTwo.Count == 1 && winPlayers.Count == 0)
-                    {
-                        firstPlayer = halfTwo[0];
-                        secondPlayer = halfOne[0];
-                    }
-                    halfTwo[0].Win++;
-                    winPlayers.Add(halfTwo[0]);
-                    halfOne[0].Loss++;
-                    lossPlayers.Add(halfOne[0]);
-
-                }
-                halfOne.RemoveAt(0);
-                halfTwo.RemoveAt(0);
+                
                 if (halfOne.Count == 0 && winPlayers.Count == 1)
                 {
                     break;
@@ -110,14 +77,57 @@ namespace EasterRaces.Core.Entities
                 }
             }
 
+            return PrintResult(firstPlayer, secondPlayer);
+
+        }
+
+        private string PrintResult(IPlayer firstPlayer, IPlayer secondPlayer)
+        {
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine($"Winner is {firstPlayer.Name} from {firstPlayer.Country}.");
             sb.AppendLine($"Second is {secondPlayer.Name} from {secondPlayer.Country}.");
 
             return sb.ToString().TrimEnd();
-
         }
+        private void CheckForWinner()
+        {
+            Random random = new Random();
+            int winner = random.Next(1, 3);
+
+            if (winner == 1)
+            {
+                if (halfOne.Count == 1 && winPlayers.Count == 0)
+                {
+                    firstPlayer = halfOne[0];
+                    secondPlayer = halfTwo[0];
+                }
+                halfOne[0].Win++;
+                winPlayers.Add(halfOne[0]);
+                halfTwo[0].Loss++;
+                lossPlayers.Add(halfTwo[0]);
+            }
+
+            else if(winner == 2)
+            {
+                if (halfTwo.Count == 1 && winPlayers.Count == 0)
+                {
+                    firstPlayer = halfTwo[0];
+                    secondPlayer = halfOne[0];
+                }
+                halfTwo[0].Win++;
+                winPlayers.Add(halfTwo[0]);
+                halfOne[0].Loss++;
+                lossPlayers.Add(halfOne[0]);
+            }
+
+            halfOne.RemoveAt(0);
+            halfTwo.RemoveAt(0);
+        }
+
+
+
+
 
         public string CreatePlayer(string name, int age, string country, string city, int numberOfPlayedMatchs, int win, int loss)
         {
