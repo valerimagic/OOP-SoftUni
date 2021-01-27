@@ -1,4 +1,4 @@
-﻿namespace EasterRaces.IO.Contracts
+﻿namespace RolandGarros.IO.Contracts
 {
     public interface IReader
     {
