@@ -1,6 +1,6 @@
-﻿using EasterRaces.Core.Contracts;
+﻿using RolandGarros.Core.Contracts;
 using System;
-using EasterRaces.IO.Contracts;
+using RolandGarros.IO.Contracts;
 
 namespace EasterRaces.Core.Entities
 {
