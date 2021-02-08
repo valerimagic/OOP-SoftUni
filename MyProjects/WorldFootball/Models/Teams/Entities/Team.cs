@@ -17,7 +17,7 @@ namespace Football.Models.Teams.Entities
 
         public Team()
         {
-            this.teams=new Dictionary<string, IPlayer>();
+            this.teams = new Dictionary<string, IPlayer>();
         }
 
         public Team(string nameCountry, StatisticTeam statisticTeam):this()
@@ -48,14 +48,14 @@ namespace Football.Models.Teams.Entities
             
         }
 
-        public void AddTeam(IPlayer player, string teamName)
+        public void AddTeam(string teamName, IPlayer player)
         {
             var addNewTeam = this.teams.FirstOrDefault(x => x.Key == teamName).Value;
-            if (addNewTeam == null)
+            if (addNewTeam != null)
             {
                 throw new ArgumentException($"Player {teamName} is not in list");
             }
-            this.teams.Add(addNewTeam);
+            this.teams.Add(teamName, player);
         }
 
 
