@@ -5,6 +5,7 @@ using System.Text;
 using Football.Core.Contracts;
 using Football.Models.Players.Contracts;
 using Football.Models.Players.Entities;
+using Football.Models.Teams.Entities;
 using Football.Utilities.Messages;
 
 namespace Football.Core.Entities
@@ -142,11 +143,20 @@ namespace Football.Core.Entities
         public string CreatePlayer(string name, int age, string country, string city)
         {
 
-            var player = new Player(name, age, country, city);
+            IPlayer player = new Player(name, age, country, city);
 
-            this.players.Add((IPlayer)player);
+            this.players.Add(player);
 
             return string.Format(OutputMessages.PlayerCount, players.Count);
+
+        }
+        public string CreateTeam(string playerName, IPlayer player)
+        {
+
+            Team team = new Team(playerName, player);
+            team.AddTeam(player, playerName);
+            
+            
 
         }
 
@@ -193,7 +203,6 @@ namespace Football.Core.Entities
             return string.Format(OutputMessages.TournamentCreated, name);
 
         }
-
 
 
 
