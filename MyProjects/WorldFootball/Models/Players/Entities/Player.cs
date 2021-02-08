@@ -94,11 +94,6 @@ namespace Football.Models.Players.Entities
             set;
         }
 
-        public void AddPlayerinTeam(ITeam team)
-        {
-            throw new NotImplementedException();
-        }
-
 
         public void AddPlayer(Player playerName)
         {
@@ -120,6 +115,10 @@ namespace Football.Models.Players.Entities
             }
 
             this.players.Remove(currentPlayer);
+        }
+        public void AddPlayerinTeam(ITeam team)
+        {
+            throw new NotImplementedException();
         }
 
     }
