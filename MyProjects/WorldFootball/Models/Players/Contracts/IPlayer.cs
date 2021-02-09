@@ -26,7 +26,7 @@ namespace Football.Models.Players.Contracts
 
         void RemovePlayer(string playerName);
 
-        //ITeam Team { get; }
+       
     }
         
 }
