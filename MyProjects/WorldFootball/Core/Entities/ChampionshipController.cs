@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using Football.Core.Contracts;
 using Football.Models.Players.Contracts;
@@ -150,14 +151,17 @@ namespace Football.Core.Entities
             return string.Format(OutputMessages.PlayerCount, players.Count);
 
         }
-        public string CreateTeam(string playerName, IPlayer player)
+
+        
+
+
+        public string CreateTeam(string teamName, IPlayer playerName)
         {
 
-            Team team = new Team(playerName, player);
-            team.AddTeam(player, playerName);
+            var team = new Team(teamName);
+            team.AddTeam(teamName, playerName);
+            return string.Format(OutputMessages.TeamCreated, teamName);
             
-            
-
         }
 
         //public string RemovePlayer(Player player, string playerName)
