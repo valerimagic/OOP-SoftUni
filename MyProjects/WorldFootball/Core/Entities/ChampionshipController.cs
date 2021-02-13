@@ -139,8 +139,6 @@ namespace Football.Core.Entities
 
 
 
-
-
         public string CreatePlayer(string name, int age, string country, string city)
         {
 
@@ -153,8 +151,6 @@ namespace Football.Core.Entities
         }
 
         
-
-
         public string CreateTeam(string teamName, IPlayer playerName)
         {
 
@@ -208,37 +204,6 @@ namespace Football.Core.Entities
 
         }
 
-
-
-
-
-
-
-
-        public string CreateDriver(string driverName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string CreatePlayer(string name, int age, string country, string city, int numberOfPlayedMatchs, int win, int loss)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string CreateCar(string type, string model, int horsePower)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string AddDriverToRace(string raceName, string driverName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string AddCarToDriver(string driverName, string carModel)
-        {
-            throw new NotImplementedException();
-        }
 
     }
 }
