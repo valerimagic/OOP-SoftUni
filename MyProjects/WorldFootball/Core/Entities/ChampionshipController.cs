@@ -160,14 +160,22 @@ namespace Football.Core.Entities
             
         }
 
-        //public string RemovePlayer(Player player, string playerName)
-        //{
+        public string RemovePlayer(Player player)
+        {
 
-        //    var playerForDelete = players.FirstOrDefault(x => x.Name == playerName);
-        //    player.RemovePlayer(playerForDelete);
-        //    return "hello";
+            var playerForDelete = players.FirstOrDefault(x => x.Name == player.Name);
+            if(playerForDelete != null)
+            {
+                this.players.Remove(playerForDelete);
+                return string.Format(OutputMessages.PlayerDeleted, player.Name);
+            }
+            else
+            {
+                throw new ArgumentException(ExceptionMessages.PlayerNOTExists, player.Name);
+            }
 
-        //}
+
+        }
         public string CreateTournament(string name, int maxCountPlayer)
         {
             if (players.Count % 2 == 0 && players.Count <= maxCountPlayer)
