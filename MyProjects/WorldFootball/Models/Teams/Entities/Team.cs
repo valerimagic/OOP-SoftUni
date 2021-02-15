@@ -14,17 +14,16 @@ namespace Football.Models.Teams.Entities
 {
     public class Team : ITeam
     {
-        //private string nameCountry;
-        private IDictionary<string, IPlayer> teams;
+        private IDictionary<string, List<IPlayer>> team;
 
         public Team()
         {
-
+            this.team = new Dictionary<string, List<IPlayer>>();
         }
 
-        public Team(IDictionary teams)
+        public Team(IDictionary<string, List<IPlayer>> team)
         {
-            this.teams = new Dictionary<string, IPlayer>();
+            this.team = team;
         }
 
         public Team(string nameCountry) : this()//, StatisticTeam statisticTeam)
@@ -32,55 +31,42 @@ namespace Football.Models.Teams.Entities
             this.NameCountry = nameCountry;
         }
 
-        public IDictionary<string, IPlayer> Teams => this.teams;
+        public IDictionary<string, List<IPlayer>> Teams => this.team;
 
         public string NameCountry { get; set; }
         public int Goal { get; }
-        public int Loss { get; }
-        public int Draw { get; }
+        
+        
         public double TotalPoints { get; }
 
         public IPlayer Player { get; }
 
         public void CheckAndAddPlayerToTeam(IPlayer player, string country)
         {
-            var playerToAdd = teams.FirstOrDefault(x => x.Key == country).Value;
+            var playerToAdd = team.FirstOrDefault(x => x.Key == country).Value;
 
             if (playerToAdd != null)
             {
                 throw new ArgumentException(ExceptionMessages.PlayerExists, player.Name);
             }
 
-            teams.Add(country, player);
+            team.Add(country, player);
             
         }
 
-        public void AddTeam(string teamName, IPlayer player)
+        public void AddTeam(string playerName, IPlayer player)
         {
-            var addNewTeam = this.teams.FirstOrDefault(x => x.Key.Contains(teamName)).Value;
+            var addNewTeam = this.team.FirstOrDefault(x => x.Key.Contains(playerName)).Value;
             if (addNewTeam != null)
             {
-                throw new ArgumentException($"Team {teamName} is already in list");
+                throw new ArgumentException($"Team {playerName} is already in list");
             }
-            this.teams.Add(teamName, player);
+            this.team.Add(playerName, player);
         }
 
-
-        public void AddTeam(IPlayer player)
-        {
-            throw new NotImplementedException();
-        }
-        public void ResultOfTheGame()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddPlayerinTeam(ITeam team)
-        {
-            throw new NotImplementedException();
-        }
 
 
         public StatisticTeam StatisticTeam { get; }
+
     }
 }
