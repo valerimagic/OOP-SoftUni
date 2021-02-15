@@ -1,5 +1,6 @@
 ﻿using System.Dynamic;
 using Football.Models.Players.Contracts;
+using Football.Models.Players.Entities;
 using Football.Models.Teams.Contracts;
 
 namespace Football.Models.Players.Contracts
@@ -22,9 +23,9 @@ namespace Football.Models.Players.Contracts
 
         bool CanParticipate { get; set; }
 
-        void AddPlayerinTeam(ITeam team);
+        void AddPlayer (string name, int age, string country, string city);
 
-        void RemovePlayer(string playerName);
+        void RemovePlayer(Player player);
 
        
     }
