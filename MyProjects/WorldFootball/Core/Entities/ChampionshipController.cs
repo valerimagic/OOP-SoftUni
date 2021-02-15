@@ -15,158 +15,54 @@ namespace Football.Core.Entities
     {
 
 
-
-        private readonly List<IPlayer> players;
-        private readonly List<IPlayer> halfOne;
-        private readonly List<IPlayer> halfTwo;
-        private readonly List<IPlayer> winPlayers;
-        private List<IPlayer> lossPlayers;
-        private IPlayer firstPlayer;
-        private IPlayer secondPlayer;
+        private List<IDictionary<string, IPlayer>> teams;
+        private readonly List<IPlayer> playerss;
+        
 
         public ChampionshipController()
         {
-
-            players = new List<IPlayer>();
-            halfOne = new List<IPlayer>();
-            halfTwo = new List<IPlayer>();
-            winPlayers = new List<IPlayer>();
-            lossPlayers = new List<IPlayer>();
-
+            teams = new List<IDictionary<string, IPlayer>>();
         }
-
-        public string StartTournament(string tournamentName)
-        {
-            while (true)
-            {
-                CheckForWinner();
-
-
-                if (MenageListWithPlayers())
-                {
-                    break;
-                }
-            }
-
-            return PrintResult(firstPlayer, secondPlayer);
-
-        }
-
-        private bool MenageListWithPlayers()
-        {
-            if (halfOne.Count == 0 && winPlayers.Count == 1)
-            {
-                return true;
-            }
-            else if (halfOne.Count == 0 && winPlayers.Count > 1)
-            {
-                int num = winPlayers.Count;
-                for (int i = 0; i < num; i++)
-                {
-                    players.Add(winPlayers[i]);
-                }
-
-                for (int i = 0; i < num; i++)
-                {
-                    winPlayers.RemoveAt(0);
-                }
-
-                int count = 0;
-                for (int i = 0; i < players.Count / 2; i++)
-                {
-                    halfOne.Add(players[i]);
-                    count++;
-                }
-
-                for (int i = count; i < players.Count; i++)
-                {
-                    halfTwo.Add(players[i]);
-                }
-
-                int number = players.Count;
-                for (int i = 0; i < number; i++)
-                {
-                    players.RemoveAt(0);
-                }
-            }
-
-            return false;
-        }
-
-        private string PrintResult(IPlayer firstPlayer, IPlayer secondPlayer)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine($"Winner is {firstPlayer.Name} from {firstPlayer.Country}.");
-            sb.AppendLine($"Second is {secondPlayer.Name} from {secondPlayer.Country}.");
-
-            return sb.ToString().TrimEnd();
-        }
-        private void CheckForWinner()
-        {
-            Random random = new Random();
-            int winner = random.Next(1, 3);
-
-            if (winner == 1)
-            {
-                if (halfOne.Count == 1 && winPlayers.Count == 0)
-                {
-                    firstPlayer = halfOne[0];
-                    secondPlayer = halfTwo[0];
-                }
-                halfOne[0].Win++;
-                winPlayers.Add(halfOne[0]);
-                halfTwo[0].Loss++;
-                lossPlayers.Add(halfTwo[0]);
-            }
-
-            else if (winner == 2)
-            {
-                if (halfTwo.Count == 1 && winPlayers.Count == 0)
-                {
-                    firstPlayer = halfTwo[0];
-                    secondPlayer = halfOne[0];
-                }
-                halfTwo[0].Win++;
-                winPlayers.Add(halfTwo[0]);
-                halfOne[0].Loss++;
-                lossPlayers.Add(halfOne[0]);
-            }
-
-            halfOne.RemoveAt(0);
-            halfTwo.RemoveAt(0);
-        }
-
-
+        //public ChampionshipController()
+        //{
+        //    players = new List<IPlayer>();
+        //}
 
         public string CreatePlayer(string name, int age, string country, string city)
         {
 
             IPlayer player = new Player(name, age, country, city);
 
-            this.players.Add(player);
+            players.AddPlayer(name, age, country, city);
 
-            return string.Format(OutputMessages.PlayerCount, players.Count);
+            return string.Format(OutputMessages.PlayerCount, playerss.Count);
+
+
+
+            //IRace race = this.raceRepository.GetByName(raceName);
+            //IRider rider = this.riderRepository.GetByName(riderName);
+            //race.AddRider(rider);
 
         }
 
-        
-        public string CreateTeam(string teamName, IPlayer playerName)
+
+        public string CreateTeam(string teamName, IPlayer playerName, IPlayer player)
         {
 
             var team = new Team(teamName);
-            team.AddTeam(teamName, playerName);
+            //team.AddTeam(teamName, playerName);
+            team.AddTeam(player.Name, player);
+            this.teams.Add();
             return string.Format(OutputMessages.TeamCreated, teamName);
-            
         }
 
         public string RemovePlayer(Player player)
         {
 
-            var playerForDelete = players.FirstOrDefault(x => x.Name == player.Name);
+            var playerForDelete = playerss.FirstOrDefault(x => x.Name == player.Name);
             if(playerForDelete != null)
             {
-                this.players.Remove(playerForDelete);
+                this.playerss.Remove(playerForDelete);
                 return string.Format(OutputMessages.PlayerDeleted, player.Name);
             }
             else
@@ -174,43 +70,8 @@ namespace Football.Core.Entities
                 throw new ArgumentException(ExceptionMessages.PlayerNOTExists, player.Name);
             }
 
-
         }
-        public string CreateTournament(string name, int maxCountPlayer)
-        {
-            if (players.Count % 2 == 0 && players.Count <= maxCountPlayer)
-            {
-                foreach (var player in players)
-                {
-                    player.CanParticipate = true;
-                }
-            }
-            else
-            {
-                throw new ArgumentException(string.Format(ExceptionMessages.InvalidCountPlayers, maxCountPlayer));
-            }
-
-            int count = 0;
-            for (int i = 0; i < players.Count / 2; i++)
-            {
-                halfOne.Add(players[i]);
-                count++;
-            }
-
-            for (int i = count; i < players.Count; i++)
-            {
-                halfTwo.Add(players[i]);
-            }
-
-            int countForRemove = players.Count;
-            for (int i = 0; i < countForRemove; i++)
-            {
-                players.RemoveAt(0);
-            }
-
-            return string.Format(OutputMessages.TournamentCreated, name);
-
-        }
+        
 
 
     }
