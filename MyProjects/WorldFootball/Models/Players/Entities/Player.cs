@@ -13,11 +13,11 @@ namespace Football.Models.Players.Entities
         private int age;
         private string country;
         private string city;
-        private List<Player> players;
+        private List<IPlayer> players;
 
-        public Player()
+        public Player()//string name, int age, string country, string city
         {
-            this.players = new List<Player>();
+            this.players = new List<IPlayer>();
         }
 
         public Player(string name, int age, string country, string city) :this()
@@ -95,31 +95,28 @@ namespace Football.Models.Players.Entities
         }
 
 
-        public void AddPlayer(Player playerName)
+        public void AddPlayer(string name, int age, string country, string city)
         {
-            Player currentPlayer = this.players.FirstOrDefault(x => x.Name == playerName.Name);
+            Player currentPlayer = this.players.FirstOrDefault(x => x.Name == name);
             if (currentPlayer == null)
             {
-                throw new ArgumentException($"Player {playerName} is not in list");
+                throw new ArgumentException($"Player {this.Name} is not in list");
             }
-            this.players.Add(playerName);
+            this.players.Add(currentPlayer);
         }
         
 
-        public void RemovePlayer(string playerName)
+        public void RemovePlayer(Player player)
         {
-            Player currentPlayer = this.players.FirstOrDefault(x => x.Name == playerName);
+            Player currentPlayer = this.players.FirstOrDefault(x => x.Name == player.Name);
             if (currentPlayer == null)
             {
-                throw new ArgumentException($"Player {playerName} is not in {this.Name} team.");
+                throw new ArgumentException($"Player {player.Name} is not in {this.Name} team.");
             }
 
             this.players.Remove(currentPlayer);
         }
-        public void AddPlayerinTeam(ITeam team)
-        {
-            throw new NotImplementedException();
-        }
+        
 
     }
 }
