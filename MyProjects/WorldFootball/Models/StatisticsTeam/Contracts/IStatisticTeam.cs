@@ -8,10 +8,6 @@ namespace Football.Models.StatisticsTeam.Contracts
     {
         string Name { get; }
 
-        int Laps { get; }
 
-        //IReadOnlyCollection<IDriver> Drivers { get; }
-
-        //void AddDriver(IDriver driver);
     }
 }
