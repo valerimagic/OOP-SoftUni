@@ -30,10 +30,11 @@ namespace Football.Core.Entities
 
         public string CreatePlayer(string name, int age, string country, string city)
         {
-
             IPlayer player = new Player(name, age, country, city);
+            Team team = new Team(player.Name);
 
-            players.AddPlayer(name, age, country, city);
+
+            team.AddTeam(player.Name, player);
 
             return string.Format(OutputMessages.PlayerCount, playerss.Count);
 
@@ -46,13 +47,13 @@ namespace Football.Core.Entities
         }
 
 
-        public string CreateTeam(string teamName, IPlayer playerName, IPlayer player)
+        public string CreateTeam(string teamName)
         {
 
             var team = new Team(teamName);
             //team.AddTeam(teamName, playerName);
-            team.AddTeam(player.Name, player);
-            this.teams.Add();
+            team.AddTeam(teamName);
+            //this.teams.Add();
             return string.Format(OutputMessages.TeamCreated, teamName);
         }
 
