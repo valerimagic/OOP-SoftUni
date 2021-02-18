@@ -12,61 +12,55 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace Football.Models.Teams.Entities
 {
-    public class Team : ITeam
+    public class Team 
     {
-        private IDictionary<string, List<IPlayer>> team;
+        public int id;
+        public string name;
+        public List<IPlayer> listPlayer;
+        public StatisticTeam statistic;
 
+        public string NameCountry;
         public Team()
         {
-            this.team = new Dictionary<string, List<IPlayer>>();
+            listPlayer = new List<IPlayer>();
+            statistic = new StatisticTeam();
         }
-
-        public Team(IDictionary<string, List<IPlayer>> team)
-        {
-            this.team = team;
-        }
-
-        public Team(string nameCountry) : this()//, StatisticTeam statisticTeam)
+        public Team(string nameCountry, string name) : this()//, StatisticTeam statisticTeam)
         {
             this.NameCountry = nameCountry;
+            this.name = name;
         }
 
-        public IDictionary<string, List<IPlayer>> Teams => this.team;
+        //public IDictionary<string, List<IPlayer>> Teams => this.team;
 
-        public string NameCountry { get; set; }
-        public int Goal { get; }
-        
-        
-        public double TotalPoints { get; }
 
-        public IPlayer Player { get; }
+        //getset
+       
 
-        public void CheckAndAddPlayerToTeam(IPlayer player, string country)
-        {
-            var playerToAdd = team.FirstOrDefault(x => x.Key == country).Value;
+        //public void CheckAndAddPlayerToTeam(IPlayer player, string country)
+        //{
+        //    var playerToAdd = team.FirstOrDefault(x => x.Key == country).Value;
 
-            if (playerToAdd != null)
-            {
-                throw new ArgumentException(ExceptionMessages.PlayerExists, player.Name);
-            }
+        //    if (playerToAdd != null)
+        //    {
+        //        throw new ArgumentException(ExceptionMessages.PlayerExists, player.Name);
+        //    }
 
-            team.Add(country, player);
+        //    team.Add(country, player);
             
-        }
+        //}
 
-        public void AddTeam(string playerName, IPlayer player)
-        {
-            var addNewTeam = this.team.FirstOrDefault(x => x.Key.Contains(playerName)).Value;
-            if (addNewTeam != null)
-            {
-                throw new ArgumentException($"Team {playerName} is already in list");
-            }
-            this.team.Add(playerName, player);
-        }
+        //public void AddTeam(string name)
+        //{
+        //    var addNewTeam = this.team.FirstOrDefault(x => x.Key.Contains(playerName)).Value;
+        //    if (addNewTeam != null)
+        //    {
+        //        throw new ArgumentException($"Team {playerName} is already in list");
+        //    }
+        //    this.team.Add(player.Name, player);
+        //}
 
 
-
-        public StatisticTeam StatisticTeam { get; }
 
     }
 }
