@@ -15,26 +15,31 @@ namespace Football.Core.Entities
     {
 
 
-        private List<IDictionary<string, IPlayer>> teams;
+        private List<Team> teams;
         private readonly List<IPlayer> playerss;
         
 
         public ChampionshipController()
         {
-            teams = new List<IDictionary<string, IPlayer>>();
+            teams = new List<Team>();
         }
-        //public ChampionshipController()
+
+        //public ChampionshipController() => teams = new List<Team>();
         //{
         //    players = new List<IPlayer>();
         //}
 
-        public string CreatePlayer(string name, int age, string country, string city)
+        public string CreatePlayer(string name, int age, string country, string city, int idTeam)
         {
             IPlayer player = new Player(name, age, country, city);
-            Team team = new Team(player.Name);
+            //Team team = new Team(player.Name);
+            int index = teams.FindIndex(x => x.id == idTeam);
+            if (index > -1)
+            {
+                teams[index].listPlayer.Add(player);
+            }
 
-
-            team.AddTeam(player.Name, player);
+            //team.AddTeam(player.Name, player);
 
             return string.Format(OutputMessages.PlayerCount, playerss.Count);
 
@@ -50,30 +55,40 @@ namespace Football.Core.Entities
         public string CreateTeam(string teamName)
         {
 
-            var team = new Team(teamName);
+            Team team = new Team("", teamName);
             //team.AddTeam(teamName, playerName);
-            team.AddTeam(teamName);
+            teams.Add(team);
             //this.teams.Add();
             return string.Format(OutputMessages.TeamCreated, teamName);
         }
 
         public string RemovePlayer(Player player)
         {
-
-            var playerForDelete = playerss.FirstOrDefault(x => x.Name == player.Name);
-            if(playerForDelete != null)
+            int index = teams.FindIndex(x => x.listPlayer.Contains(player));
+            if (index > -1)
             {
-                this.playerss.Remove(playerForDelete);
+                teams[index].listPlayer.Remove(player);
                 return string.Format(OutputMessages.PlayerDeleted, player.Name);
             }
             else
             {
                 throw new ArgumentException(ExceptionMessages.PlayerNOTExists, player.Name);
             }
+            //var playerForDelete = .FirstOrDefault(x => x.Name == player.Name);
+            //if(playerForDelete != null)
+            //{
+            //    this.playerss.Remove(playerForDelete);
+            //    return string.Format(OutputMessages.PlayerDeleted, player.Name);
+            //}
+            //else
+            //{
+            //}
 
         }
-        
 
-
+        public string CreatePlayer(string name, int age, string country, string city)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
