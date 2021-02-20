@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Football.Core.Contracts;
 using Football.Models.Players.Contracts;
 using Football.Models.Players.Entities;
@@ -46,7 +47,10 @@ namespace Football.Core.Entities
         public string RemovePlayer(Player player)
         {
 
+            
             int index = teams.FindIndex(x => x.listPlayer.Contains(player));
+            //var index = teams.FirstOrDefault(x => x.listPlayer.Contains(player));// (x => x.listPlayer.Contains(player));
+            
             if (index > -1)
             {
                 teams[index].listPlayer.Remove(player);
