@@ -13,12 +13,10 @@ namespace Football.Models.Players.Entities
         private int age;
         private string country;
         private string city;
-        private int team_id;
-        //private List<IPlayer> players;
 
-        public Player()//string name, int age, string country, string city
+        public Player()
         {
-            //this.players = new List<IPlayer>();
+            
         }
 
         public Player(string name, int age, string country, string city) :this()
@@ -94,40 +92,6 @@ namespace Football.Models.Players.Entities
             get;
             set;
         }
-
-        public void AddPlayer(string name, int age, string country, string city)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemovePlayer(Player player)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        //public void AddPlayer(string name, int age, string country, string city)
-        //{
-        //    Player currentPlayer = this.players.FirstOrDefault(x => x.Name == name);
-        //    if (currentPlayer == null)
-        //    {
-        //        throw new ArgumentException($"Player {this.Name} is not in list");
-        //    }
-        //    this.players.Add(currentPlayer);
-        //}
-
-
-        //public void RemovePlayer(Player player)
-        //{
-        //    Player currentPlayer = this.players.FirstOrDefault(x => x.Name == player.Name);
-        //    if (currentPlayer == null)
-        //    {
-        //        throw new ArgumentException($"Player {player.Name} is not in {this.Name} team.");
-        //    }
-
-        //    this.players.Remove(currentPlayer);
-        //}
-
 
     }
 }
