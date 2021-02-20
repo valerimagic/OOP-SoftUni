@@ -23,10 +23,6 @@ namespace Football.Models.Players.Contracts
 
         bool CanParticipate { get; set; }
 
-        void AddPlayer (string name, int age, string country, string city);
-
-        void RemovePlayer(Player player);
-
        
     }
         
