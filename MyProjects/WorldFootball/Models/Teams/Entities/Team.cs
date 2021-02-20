@@ -25,41 +25,11 @@ namespace Football.Models.Teams.Entities
             listPlayer = new List<IPlayer>();
             statistic = new StatisticTeam();
         }
-        public Team(string nameCountry, string name) : this()//, StatisticTeam statisticTeam)
+        public Team(string nameCountry, string name) : this()
         {
             this.NameCountry = nameCountry;
             this.name = name;
         }
-
-        //public IDictionary<string, List<IPlayer>> Teams => this.team;
-
-
-        //getset
-       
-
-        //public void CheckAndAddPlayerToTeam(IPlayer player, string country)
-        //{
-        //    var playerToAdd = team.FirstOrDefault(x => x.Key == country).Value;
-
-        //    if (playerToAdd != null)
-        //    {
-        //        throw new ArgumentException(ExceptionMessages.PlayerExists, player.Name);
-        //    }
-
-        //    team.Add(country, player);
-            
-        //}
-
-        //public void AddTeam(string name)
-        //{
-        //    var addNewTeam = this.team.FirstOrDefault(x => x.Key.Contains(playerName)).Value;
-        //    if (addNewTeam != null)
-        //    {
-        //        throw new ArgumentException($"Team {playerName} is already in list");
-        //    }
-        //    this.team.Add(player.Name, player);
-        //}
-
 
 
     }
