@@ -8,6 +8,5 @@ namespace Football.Models.StatisticsTeam.Contracts
     {
         string Name { get; }
 
-
     }
 }
