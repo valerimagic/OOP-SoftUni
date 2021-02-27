@@ -12,5 +12,7 @@ namespace Football.Core.Contracts
 
         string CreateTeam(string teamName);
 
+        string AddStatistic(int a, int b, int c, int d, int team_id);
+        string Save();
     }
 }
