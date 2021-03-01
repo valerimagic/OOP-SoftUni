@@ -1,8 +1,7 @@
-﻿using Football.Utilities.Messages;
-using System;
-
-namespace Football.Models.StatisticsTeam.Entities
+﻿namespace Football.Models.StatisticsTeam.Entities
 {
+    using System;
+    using Football.Utilities.Messages;
     public class StatisticTeam
     {
         private int numberOfPlayedMatchs;
@@ -10,11 +9,11 @@ namespace Football.Models.StatisticsTeam.Entities
         private int loss;
         private int draw;
 
-
         public StatisticTeam()
         {
-                
+
         }
+
         public StatisticTeam(int numberOfPlayedMatchs, int win, int loss, int draw)
         {
             this.NumberOfPlayedMatchs = numberOfPlayedMatchs;
@@ -30,12 +29,13 @@ namespace Football.Models.StatisticsTeam.Entities
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException((ExceptionMessages.InvalidNumberOfMatch));
+                    throw new ArgumentException(ExceptionMessages.InvalidNumberOfMatch);
                 }
 
                 this.numberOfPlayedMatchs = value;
             }
         }
+
         public int Win
         {
             get => this.win;
@@ -43,12 +43,13 @@ namespace Football.Models.StatisticsTeam.Entities
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException((ExceptionMessages.InvalidPoints));
+                    throw new ArgumentException(ExceptionMessages.InvalidPoints);
                 }
 
                 this.win = value;
             }
         }
+
         public int Loss
         {
             get => this.loss;
@@ -56,7 +57,7 @@ namespace Football.Models.StatisticsTeam.Entities
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException((ExceptionMessages.InvalidPoints));
+                    throw new ArgumentException(ExceptionMessages.InvalidPoints);
                 }
 
                 this.loss = value;
@@ -70,13 +71,11 @@ namespace Football.Models.StatisticsTeam.Entities
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException((ExceptionMessages.InvalidPoints));
+                    throw new ArgumentException(ExceptionMessages.InvalidPoints);
                 }
 
                 this.draw = value;
             }
         }
-
-
     }
 }

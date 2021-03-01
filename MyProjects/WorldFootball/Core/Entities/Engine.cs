@@ -31,6 +31,8 @@ namespace Football.Core.Entities
                     var cmdType = args[0];
                     string resultMessage = string.Empty;
 
+                    
+
                     if (cmdType == "CreatePlayer")
                     {
                         resultMessage =
@@ -49,6 +51,17 @@ namespace Football.Core.Entities
                         resultMessage =
                             this.controller
                                 .CreateTeam(args[1]);
+                    }
+
+                    if (cmdType == "CreateStatistic")
+                    {
+                        resultMessage = this.controller.AddStatistic(int.Parse(args[1]), int.Parse(args[2]),
+                            int.Parse(args[3]), int.Parse(args[4]), int.Parse(args[5]));
+                    }
+
+                    if (cmdType == "Save")
+                    {
+                        this.controller.Save();
                     }
                     
 
