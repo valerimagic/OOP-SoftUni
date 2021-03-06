@@ -11,7 +11,7 @@ namespace DAL.DataContext
     public class PhoneDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
-        public DbSet<Contacts> Contactss { get; set; }
+        public DbSet<Contacts> Contacts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -20,6 +20,5 @@ namespace DAL.DataContext
                 optionsBuilder.UseSqlServer(Connection.DefaultConnection);
             }
         }
-
     }
 }
