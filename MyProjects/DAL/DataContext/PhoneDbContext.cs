@@ -20,5 +20,13 @@ namespace DAL.DataContext
                 optionsBuilder.UseSqlServer(Connection.DefaultConnection);
             }
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Entity<User>()
+                .HasMany(c => c.ContactID)
+                .WithOne(u => u.UserId);
+        }
     }
 }
