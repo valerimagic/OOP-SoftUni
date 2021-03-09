@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Football.Models.Players.Contracts;
-using Football.Models.Teams.Contracts;
-using Football.Utilities.Messages;
-
-namespace Football.Models.Players.Entities
+﻿namespace Football.Models.Players.Entities
 {
+    using System;
+    using Football.Models.Players.Contracts;
+    using Football.Utilities.Messages;
+
     public class Player : IPlayer
     {
         private string name;
@@ -16,10 +13,9 @@ namespace Football.Models.Players.Entities
 
         public Player()
         {
-            
         }
 
-        public Player(string name, int age, string country, string city) :this()
+        public Player(string name, int age, string country, string city) : this()
         {
             this.Name = name;
             this.Age = age;
@@ -68,6 +64,7 @@ namespace Football.Models.Players.Entities
                 this.country = value;
             }
         }
+
         public string City
         {
             get => this.city;
@@ -83,15 +80,11 @@ namespace Football.Models.Players.Entities
         }
 
         public int NumberOfPlayedMatchs { get; }
+
         public int Win { get; set; }
+
         public int Loss { get; set; }
 
-
-        public bool CanParticipate
-        {
-            get;
-            set;
-        }
-
+        public bool CanParticipate { get; set; }
     }
 }
