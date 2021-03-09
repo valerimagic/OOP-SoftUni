@@ -1,11 +1,10 @@
-﻿using Football.Core.Contracts;
-using System;
-using System.Collections.Generic;
-using Football.IO.Contracts;
-using Football.Models.Players.Entities;
-
-namespace Football.Core.Entities
+﻿namespace Football.Core.Entities
 {
+    using System;
+    using Football.Core.Contracts;
+    using Football.IO.Contracts;
+    using Football.Models.Players.Entities;
+
     public class Engine
     {
         private readonly IChampionshipController controller;
@@ -31,39 +30,32 @@ namespace Football.Core.Entities
                     var cmdType = args[0];
                     string resultMessage = string.Empty;
 
-                    
-
                     if (cmdType == "CreatePlayer")
                     {
                         resultMessage =
-                            this.controller.CreatePlayer(args[1], int.Parse(args[2]), args[3],
-                                args[4], int.Parse(args[5]));
+                            this.controller.CreatePlayer(args[1], int.Parse(args[2]), args[3], args[4], int.Parse(args[5]));
                     }
 
                     if (cmdType == "RemovePlayer")
                     {
-                        resultMessage = this.controller.RemovePlayer(new Player(args[1], int.Parse(args[2]), args[3],
-                            args[4]));
+                        resultMessage = this.controller.RemovePlayer(new Player(args[1], int.Parse(args[2]), args[3], args[4]));
                     }
 
                     if (cmdType == "CreateTeam")
                     {
                         resultMessage =
-                            this.controller
-                                .CreateTeam(args[1]);
+                            this.controller.CreateTeam(args[1]);
                     }
 
                     if (cmdType == "CreateStatistic")
                     {
-                        resultMessage = this.controller.AddStatistic(int.Parse(args[1]), int.Parse(args[2]),
-                            int.Parse(args[3]), int.Parse(args[4]), int.Parse(args[5]));
+                        resultMessage = this.controller.AddStatistic(int.Parse(args[1]), int.Parse(args[2]), int.Parse(args[3]), int.Parse(args[4]), int.Parse(args[5]));
                     }
 
                     if (cmdType == "Save")
                     {
                         this.controller.Save();
                     }
-                    
 
                     this.writer.WriteLine(resultMessage);
                 }
@@ -75,6 +67,5 @@ namespace Football.Core.Entities
                 command = this.reader.ReadLine();
             }
         }
-
     }
 }
