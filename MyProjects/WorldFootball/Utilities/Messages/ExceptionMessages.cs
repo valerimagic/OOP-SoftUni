@@ -19,7 +19,5 @@
         public const string PlayerNOTExists = "Player {0} do not exist.";
 
         public const string InvalidPoints = "Points must be more or equal than 0";
-               
-        
     }
 }
