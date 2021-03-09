@@ -1,9 +1,4 @@
-﻿using System.Dynamic;
-using Football.Models.Players.Contracts;
-using Football.Models.Players.Entities;
-using Football.Models.Teams.Contracts;
-
-namespace Football.Models.Players.Contracts
+﻿namespace Football.Models.Players.Contracts
 {
     public interface IPlayer
     {
@@ -15,15 +10,12 @@ namespace Football.Models.Players.Contracts
 
         string City { get; }
 
-        int NumberOfPlayedMatchs{ get; }
+        int NumberOfPlayedMatchs { get; }
 
         int Win { get; set; }
 
         int Loss { get; set; }
 
         bool CanParticipate { get; set; }
-
-       
     }
-        
 }
