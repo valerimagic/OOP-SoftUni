@@ -35,13 +35,14 @@
             
             if (team == null)
             {
-                // return exception
+                return string.Format(OutputMessages.TeamsIsEmpty, country);
             }
 
             var current_player = team.ListPlayer.Where(x => x.Name == name).FirstOrDefault();
+
             if (current_player is null)
             {
-                // return exception
+                return string.Format(OutputMessages.PlayerIsNotCreated, name);
             }
 
             Players modelPlayer = new Players();

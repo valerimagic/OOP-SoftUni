@@ -2,6 +2,7 @@
 {
     using System;
     using Football.Utilities.Messages;
+
     public class StatisticTeam
     {
         private int numberOfPlayedMatchs;
@@ -11,7 +12,6 @@
 
         public StatisticTeam()
         {
-
         }
 
         public StatisticTeam(int numberOfPlayedMatchs, int win, int loss, int draw)
