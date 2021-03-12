@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace Dataaccess.Entity
+﻿namespace Dataaccess.Entity
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class BaseClass
     {
         [Key]
-        public int ID { get; set; }  
+        public int ID { get; set; }
     }
 }
