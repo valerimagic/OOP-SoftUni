@@ -12,6 +12,9 @@ namespace DAL.DataContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Contacts> Contacts { get; set; }
+        public DbSet<RegistrationDetail> RegistrationDetails { get; set; }
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
