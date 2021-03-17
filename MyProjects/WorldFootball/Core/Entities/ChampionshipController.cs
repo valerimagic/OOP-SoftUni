@@ -61,7 +61,7 @@
         public string Save()
         {
             this.servise.Teams.Add(this.entityTeam);
-            this.servise.SaveChangesAsync(); //asinc???
+            this.servise.SaveChangesAsync();
             return string.Empty;
         }
 
