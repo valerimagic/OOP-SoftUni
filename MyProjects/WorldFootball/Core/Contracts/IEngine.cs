@@ -1,6 +1,6 @@
 ﻿namespace Football.Core.Contracts
 {
-    class IEngine
+    public interface IEngine
     {
     }
 }
