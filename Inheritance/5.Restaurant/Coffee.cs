@@ -15,6 +15,6 @@ namespace Restaurant
             
             this.Caffeine = caffeine;
         }
-        public double Caffeine { get; internal set; }
+        public double Caffeine { get; set; }
     }
 }

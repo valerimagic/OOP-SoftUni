@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Restaurant
 {
-    public abstract class Beverage : Product
+    public class Beverage : Product
     {
         private double milliliters;
 
@@ -14,11 +14,11 @@ namespace Restaurant
             this.Milliliters = milliliters;
         }
 
-        public double Milliliters { get; internal set; }
+        public double Milliliters { get; set; }
 
         //public string Name { get; internal set; }
 
-        //public decimal Price { get; internal set; }
+        //public double Price { get; internal set; }
 
     }
 }
