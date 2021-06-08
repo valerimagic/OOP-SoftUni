@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Restaurant
+﻿namespace Restaurant
 {
     public class Coffee : HotBeverage
     {
@@ -12,9 +8,9 @@ namespace Restaurant
         public Coffee(string name, double caffeine) 
             : base(name, CoffeePrice, CoffeeMilliliters)
         {
-            
             this.Caffeine = caffeine;
         }
+
         public double Caffeine { get; set; }
     }
 }
