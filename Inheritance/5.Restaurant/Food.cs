@@ -10,12 +10,14 @@ namespace Restaurant
         public Food(string name, decimal price, double grams) 
             : base(name, price)
         {
+            this.Name = name;
+            this.Price = price;
             this.Grams = grams;
         }
 
-        //public string Name { get; internal set; }
+        public string Name { get; internal set; }
 
-        //public decimal Price { get; internal set; }
+        public decimal Price { get; internal set; }
 
         public double Grams { get; internal set; }
     }
