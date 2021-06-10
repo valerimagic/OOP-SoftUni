@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Animals
+﻿namespace Animals
 {
+    using System;
+    using System.Text;
+
     public class Animal : ISoundProducable
     {
         private string name;
         private int age;
         private string gender;
-
         private const string exeptionMessages = "Invalid input!";
 
         public Animal(string name, int age, string gender)
@@ -82,6 +80,5 @@ namespace Animals
 
             return sb.ToString().TrimEnd();
         }
-
     }
 }

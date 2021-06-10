@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Zoo
+﻿namespace Zoo
 {
     public class Snake : Reptile
     {
         public Snake(string name) : base(name)
         {
-
         }
 
-        public int Name { get; set; }
-
+        public string Name { get; set; }
     }
 }

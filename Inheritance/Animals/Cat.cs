@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Animals
+﻿namespace Animals
 {
     public class Cat : Animal
     {
@@ -15,6 +11,5 @@ namespace Animals
         {
             return "Meow meow";
         }
-        
     }
 }

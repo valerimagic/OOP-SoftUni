@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Animals
+﻿namespace Animals
 {
+    using System;
+    using System.Collections.Generic;
+
     public class StartUp
     {
         public static void Main(string[] args)
@@ -12,7 +11,7 @@ namespace Animals
 
             string command;
 
-            while((command = Console.ReadLine()) != "Beast!")
+            while ((command = Console.ReadLine()) != "Beast!")
             {
                 string[] input = Console.ReadLine().Split();
 
@@ -22,11 +21,11 @@ namespace Animals
 
                 try
                 {
-                    if(command == "Cat")
+                    if (command == "Cat")
                     {
                         animals.Add(new Cat(name, age, gender));
                     }
-                    else if(command == "Dog")
+                    else if (command == "Dog")
                     {
                         animals.Add(new Dog(name, age, gender));
                     }
@@ -42,34 +41,18 @@ namespace Animals
                     {
                         animals.Add(new Kitten(name, age));
                     }
-
                     else
                     {
                         throw new ArgumentException("Invalid input!");
                     }
-
-
-
-
                 }
                 catch (ArgumentException ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
-
-
-
             }
 
             animals.ForEach(Console.WriteLine);
-
         }
-
-       
-            //foreach(var animal in animals)
-            //{
-            //    Console.WriteLine();
-            //}
-       
     }
 }

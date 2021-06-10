@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Person
+﻿namespace Person
 {
+    using System;
+
     public class Child : Person
     {
         public Child(string name, int age)
-            :base(name, age)
+            : base(name, age)
         {
             this.Name = name;
             this.Age = age;
         }
 
-        public override int Age 
+        public override int Age
         {
             get
             {
@@ -22,7 +20,7 @@ namespace Person
 
             set
             {
-                if(value > 15)
+                if (value > 15)
                 {
                     throw new ArgumentException("Child's age must be less than 15!");
                 }
@@ -30,7 +28,5 @@ namespace Person
                 base.Age = value;
             }
         }
-
-
     }
 }

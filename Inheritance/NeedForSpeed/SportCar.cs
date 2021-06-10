@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NeedForSpeed
+﻿namespace NeedForSpeed
 {
     public class SportCar : Car
     {
@@ -16,7 +12,6 @@ namespace NeedForSpeed
         public override double FuelConsumption()
         {
             return 5.0;
-
         }
     }
 }

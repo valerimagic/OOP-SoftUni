@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PlayersAndMonsters
+﻿namespace PlayersAndMonsters
 {
     public class Hero
     {
@@ -20,6 +16,5 @@ namespace PlayersAndMonsters
         {
             return $"Type: {this.GetType().Name} Username: {this.Username} Level: {this.Level}";
         }
-
     }
 }

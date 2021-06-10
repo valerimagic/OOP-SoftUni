@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PlayersAndMonsters
+﻿namespace PlayersAndMonsters
 {
     public class DarkKnight : Knight
     {
@@ -10,10 +6,9 @@ namespace PlayersAndMonsters
             : base(username, level)
         {
         }
+
         public string Username { get; set; }
+
         public int Level { get; set; }
-
     }
-
-
 }
